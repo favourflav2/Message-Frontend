@@ -4,6 +4,6 @@ const devEnv = process.env.NODE_ENV !== "production"
 
 const {REACT_APP_LOCALHOST_API,REACT_APP_PROD_API} = process.env
 
-//const ENDPOINT = "http://localhost:5001"
+const ENDPOINT = "http://localhost:5001"
 
-export const socket = io(`${devEnv? REACT_APP_LOCALHOST_API : REACT_APP_PROD_API}`)
+export const socket = io(ENDPOINT)
