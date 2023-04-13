@@ -11,10 +11,14 @@ import { store } from "./redux/store";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // 567539344291-eikojo2gm5tiqrm39jjn70mmlqr93u68.apps.googleusercontent.com
+// production  134470840670-mfnapi29b8fb9cvppitt8d6df6gdfjfr.apps.googleusercontent.com
+
+const devEnv = process.env.NODE_ENV !== "production"
+    const clientId = devEnv ? "567539344291-eikojo2gm5tiqrm39jjn70mmlqr93u68.apps.googleusercontent.com" : "134470840670-mfnapi29b8fb9cvppitt8d6df6gdfjfr.apps.googleusercontent.com"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <GoogleOAuthProvider clientId="567539344291-eikojo2gm5tiqrm39jjn70mmlqr93u68.apps.googleusercontent.com">
+  <GoogleOAuthProvider clientId={clientId}>
     <React.StrictMode>
       <ToastContainer />
       <BrowserRouter>
