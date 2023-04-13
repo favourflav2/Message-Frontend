@@ -14,7 +14,9 @@ import GoogleIcon from "@mui/icons-material/Google";
 
 export default function SignUp() {
   const devEnv = process.env.NODE_ENV !== "production"
-  const {REACT_APP_LOCALHOST_API,REACT_APP_PROD_API} = process.env
+  
+  
+  
 
   const [formData, setFormData] = React.useState({
     userName: "",
@@ -110,7 +112,7 @@ export default function SignUp() {
       if (file.type === "image/jpeg" || "image/png") {
         setUploadLoading(true)
         
-        const res = await axios.post(`${devEnv ? REACT_APP_LOCALHOST_API : REACT_APP_PROD_API}/api/uplaod`, {
+        const res = await axios.post(`${devEnv ? process.env.REACT_APP_LOCALHOST_API : process.env.REACT_APP_PROD_API}/api/uplaod`, {
           body: imgFile,
         });
         //console.log(res.data);
