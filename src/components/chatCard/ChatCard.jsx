@@ -6,7 +6,7 @@ import {  useSelector } from "react-redux";
 export default function ChatCard({ item,handleClick }) {
 
     //if(item._id)
-    const { selectedChat } = useSelector((state) => state.chat);
+    const { selectedChat,messages } = useSelector((state) => state.chat);
     //const dispatch = useDispatch()
     const { user } = useSelector(
         (state) => state.auth
@@ -21,6 +21,7 @@ export default function ChatCard({ item,handleClick }) {
          return chatUser[0]._id === userId ? chatUser[1].userName : chatUser[0].userName
      }
     
+     console.log(item)
 
   return (
     <Box className={selectedChat._id === item._id ? "w-[99%] h-[80px] flex flex-col cursor-pointer items-center chatCard" : "w-[99%] cursor-pointer h-[80px] flex flex-col  items-center "} onClick={handleClick}>
@@ -36,7 +37,7 @@ export default function ChatCard({ item,handleClick }) {
           <Box className="flex justify-between">
 
             <Typography className="text-gray-600 ml-2 text-[15px]">
-              Luara: <span>Hey!</span>
+              <span>{item?.latestMessage?.sender?._id === userId ? "You:" : <>{getSender()}:</> }</span> <span>{item?.latestMessage?.content}</span>
             </Typography>
 
             <span className="text-gray-600 text-[15px]">2h</span>
