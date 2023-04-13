@@ -56,7 +56,7 @@ export default function SingleChat() {
   // Socket state
   const [socketConnect, setSocketConnect] = React.useState(false);
   const [chatCompare, setChatcompare] = React.useState(null);
-  const [gas, setGas] = React.useState("");
+  
 
   function getSender() {
     return chatUser[0]._id === userId
@@ -135,7 +135,17 @@ export default function SingleChat() {
       .map((item) => item[0].toUpperCase() + item.slice(1))
       .join(" ");
 
-  function handleKeySubmit(event) {}
+  function handleKeySubmit(event) {
+    if(writeMessage){
+      if(event.key === "Enter"){
+        dispatch(
+          sendMessage({ content: writeMessage, chatId: selectedChat?._id })
+        );
+        setWriteMessage("");
+        socket.emit("stop typing", selectedChat?._id);
+      }
+    }
+  }
 
   function handleSubmit() {
     if (writeMessage) {

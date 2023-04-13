@@ -159,6 +159,12 @@ const chatSlice = createSlice({
     },
     deleteNoti : (state,action) =>{
       state.noti = state.noti.filter(value => value._id !== action.payload._id)
+    },
+    chatError:(state,action) => {
+      state.error = ""
+    },
+    deleteNotiOnSelectedChat:(state,action) => {
+      state.noti = state.noti.filter(value => value?.chat?._id !== action.payload._id)
     }
   },
   extraReducers: (builder) => {
@@ -299,7 +305,7 @@ const chatSlice = createSlice({
 });
 
 export default chatSlice.reducer;
-export const {changeChats,setChat, changeSelectedChat, emptySelectedChat, setMessages, setNoti, deleteNoti} = chatSlice.actions
+export const {changeChats,setChat, changeSelectedChat, emptySelectedChat, setMessages, setNoti, deleteNoti, chatError, deleteNotiOnSelectedChat} = chatSlice.actions
 
 // const authSlice = createSlice({
 //     name: "auth",

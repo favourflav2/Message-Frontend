@@ -15,6 +15,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changeSelectedChat,
+  chatError,
   createGroupChat,
   getAllChats,
   getChats,
@@ -51,6 +52,7 @@ export default function MyChats({setOpenDrawer,openDrawer}) {
 
   React.useEffect(() => {
     dispatch(getAllChats());
+    dispatch(chatError())
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const style = {

@@ -30,7 +30,7 @@ import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
 import ChatLoading from "../loading/ChatLoading";
 import UserSearchCard from "../UserSearchCard/UserSearchCard";
-import { changeChats, changeSelectedChat, deleteNoti, getChats } from "../../redux/features/chatSlice";
+import { changeChats, changeSelectedChat, deleteNoti, deleteNotiOnSelectedChat, getChats } from "../../redux/features/chatSlice";
 import MenuIcon from "@mui/icons-material/Menu";
 import LogoutIcon from '@mui/icons-material/Logout';
 
@@ -135,6 +135,14 @@ export default function NavBar({ setOpenDrawer, openDrawer }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedChat]);
+
+   React.useEffect(()=>{
+    const arr = noti?.findIndex(value => value?.chat?._id === selectedChat?._id)
+    if(arr !== -1){
+      dispatch(deleteNotiOnSelectedChat(selectedChat))
+    }
+   },[noti,selectedChat,dispatch])
+ 
 
   
 
