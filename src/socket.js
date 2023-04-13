@@ -1,5 +1,9 @@
 import { io } from "socket.io-client"
 
-const ENDPOINT = "http://localhost:5001"
+const devEnv = process.env.NODE_ENV !== "production"
 
-export const socket = io(ENDPOINT)
+const {REACT_APP_LOCALHOST_API,REACT_APP_PROD_API} = process.env
+
+//const ENDPOINT = "http://localhost:5001"
+
+export const socket = io(`${devEnv? REACT_APP_LOCALHOST_API : REACT_APP_PROD_API}`)
