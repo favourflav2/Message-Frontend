@@ -276,7 +276,7 @@ export default function SingleChat() {
               className={
                 isNonMobile
                   ? " min-h-[550px] max-h-[600px] p-1"
-                  : " min-h-[450px] max-h-[460px]"
+                  : " min-h-[400px] max-h-[410px]"
               }
             >
               <ScrollChat />
@@ -289,7 +289,7 @@ export default function SingleChat() {
                 <></>
               )}
             </Box>
-            <Box className="flex items-center w-full py-4 justify-center mt-12">
+            <Box className="flex items-center w-full py-4 justify-center mt-5">
               <IconButton>
                 <AttachFileIcon className="text-gray-700 text-xl" />
               </IconButton>
