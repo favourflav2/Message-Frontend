@@ -33,7 +33,7 @@ export default function Login() {
   // });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { error } = useSelector((state) => state.auth);
+  const { error,loading } = useSelector((state) => state.auth);
   
 
   function handleChange(e) {
@@ -148,8 +148,9 @@ export default function Login() {
                 variant="contained"
                 type="submit"
                 className="md:w-[95%] lg:w-[80%] my-2 bg-blue-400"
+                disabled={loading}
               >
-                Log In
+                {loading? "Loading..." : "Log In"}
               </Button>
             </form>
 
@@ -166,9 +167,10 @@ export default function Login() {
               <Button
                 className="md:w-[95%] lg:w-[80%] my-2 bg-red-500 flex text-gray-300 hover:bg-red-700"
                 onClick={googleLogin}
+                disabled={loading}
               >
                 <GoogleIcon className="mr-1" />
-                Sign In
+                {loading ? "Loading..." : "Sign Up"}
               </Button>
             </Box>
 
@@ -232,8 +234,9 @@ export default function Login() {
                 variant="contained"
                 type="submit"
                 className="w-[80%] my-2 bg-blue-400"
+                disabled={loading}
               >
-                Log In
+                {loading? "Loading..." : "Log In"}
               </Button>
             </form>
 
@@ -250,9 +253,10 @@ export default function Login() {
               <Button
                 className="w-[80%] my-2 bg-red-500 flex text-gray-300 hover:bg-red-700"
                 onClick={googleLogin}
+                disabled={loading}
               >
                 <GoogleIcon className="mr-1" />
-                Sign In
+                {loading? "Loading..." : "Sign In"}
               </Button>
             </Box>
 

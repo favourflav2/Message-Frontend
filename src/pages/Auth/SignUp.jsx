@@ -242,10 +242,10 @@ export default function SignUp() {
               <Button
                 className="md:w-[95%] lg:w-[80%] my-2 bg-red-500 flex text-gray-300 hover:bg-red-700"
                 onClick={googleLogin}
-                disabled={uploadLoading}
+                disabled={uploadLoading || loading}
               >
                 <GoogleIcon className="mr-1" />
-                {uploadLoading ? "Loading..." : "Sign In"}
+                {uploadLoading || loading ? "Loading..." : "Sign In"}
               </Button>
             </Box>
 
@@ -347,9 +347,10 @@ export default function SignUp() {
               <Button
                 className="w-[80%] my-2 bg-red-500 flex text-gray-300 hover:bg-red-700"
                 onClick={googleLogin}
+                disabled={uploadLoading || loading}
               >
                 <GoogleIcon className="mr-1" />
-                Sign In
+                {uploadLoading || loading ? "Loading..." : "Sign In"}
               </Button>
             </Box>
 
